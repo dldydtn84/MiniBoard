@@ -68,8 +68,9 @@ public class BoardService {
 		return contentBean;
 	}
 
-	public ContentBean getMainInfo(int board_info_idx) {
-		ContentBean MainBean = boardDao.getMainInfo(board_info_idx);
-		return MainBean;
+	public List<ContentBean> getMainInfo(int board_info_idx) {
+		List<ContentBean> MainminiBean = boardDao.getMainInfo(board_info_idx);
+		return MainminiBean;
 	} 
+
 }

@@ -24,6 +24,6 @@ public interface BoardMapper { //Mapper준비 단계
 	ContentBean getContentInfoBean(int content_idx);
 	
 	@Select("select content_idx, content_subject, to_char(content_date, 'YYYY-MM-DD') as content_date from content_table  where  content_board_idx = #{board_info_idx} and rownum<=5 order by content_idx desc")
-	ContentBean getMainInfo(int board_info_idx);
+	List<ContentBean> getMainInfo(int board_info_idx);
 	
 }
