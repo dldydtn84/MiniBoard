@@ -24,10 +24,12 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import kr.co.ezen.beans.UserBean;
 import kr.co.ezen.interceptor.CheckLoginInterceptor;
+import kr.co.ezen.interceptor.CheckWriterInterceptor;
 import kr.co.ezen.interceptor.TopMenuInterceptor;
 import kr.co.ezen.mapper.BoardMapper;
 import kr.co.ezen.mapper.TopMenuMapper;
 import kr.co.ezen.mapper.UserMapper;
+import kr.co.ezen.service.BoardService;
 import kr.co.ezen.service.TopMenuService;
 
 // Spring MVC 프로젝트에 관련된 설정을 하는 클래스
@@ -56,6 +58,8 @@ public class ServletAppContext implements WebMvcConfigurer {
 
 	@Autowired
 	private TopMenuService topMenuService;
+	@Autowired
+	private BoardService boardService;
 
 	// 로그인을 성공 여부 체크
 	@Resource(name = "loginUserBean")
@@ -139,6 +143,12 @@ public class ServletAppContext implements WebMvcConfigurer {
 		reg2.addPathPatterns("/user/modify", "/user/logout", "/board/*");//통과
 		reg2.excludePathPatterns("/board/main");//제외
 		
+		
+		CheckWriterInterceptor checkWriterInterceptor =new CheckWriterInterceptor(loginUserBean, boardService);
+		InterceptorRegistration reg3 = registry.addInterceptor(checkWriterInterceptor);
+		reg3.addPathPatterns("/board/modify", "/board/delete");
+		
+		
 	}
 
 	// 기존 메시지 프로퍼티와 새로운 메시지 프로퍼티간의 충돌 현상으로 PropertySourcesPlaceholderConfigurer를
@@ -159,6 +169,6 @@ public class ServletAppContext implements WebMvcConfigurer {
 	      return new StandardServletMultipartResolver();
 	   }
 	
-	
+
 
 }

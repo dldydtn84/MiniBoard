@@ -33,14 +33,14 @@ public class BoardDao {
 		
 	}
 	
-	public ContentBean getContentInfoBean(int content_idx) {
-	ContentBean contentBean = boardMapper.getContentInfoBean(content_idx);
+	public ContentBean getContentInfo(int content_idx) {
+	ContentBean contentBean = boardMapper.getContentInfo(content_idx);
 		
 	return contentBean;
 	}
 	
-	public List<ContentBean> getMainInfo(int board_info_idx) {
-		List<ContentBean> MainminiBean = boardMapper.getMainInfo(board_info_idx);
+	public List<ContentBean> getMainInfo() {
+		List<ContentBean> MainminiBean = boardMapper.getMainInfo();
 		return MainminiBean;
 	} 
 

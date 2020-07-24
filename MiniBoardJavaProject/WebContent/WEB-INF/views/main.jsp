@@ -171,31 +171,14 @@
 							</tr>
 						</thead>
 						<tbody>
+							<c:forEach var='obj' items="${MainminiBean}">
 							<tr>
-								<td class="text-center">5</td>
-								<th><a href='${root }board/read'>제목입니다</a></th>
-								<td class="text-center d-none d-xl-table-cell">2019-12-15</td>
+								<td class="text-center">${obj.content_idx }</td>
+								<th><a href='${root }board/read?board_info_idx=4&content_idx=${obj.content_idx }'>${obj.content_subject }</a></th>
+								<td class="text-center d-none d-xl-table-cell">${obj.content_date }</td>
 							</tr>
-							<tr>
-								<td class="text-center">5</td>
-								<th><a href='${root }board/read'>제목입니다</a></th>
-								<td class="text-center d-none d-xl-table-cell">2019-12-15</td>
-							</tr>
-							<tr>
-								<td class="text-center">5</td>
-								<th><a href='${root }board/read'>제목입니다</a></th>
-								<td class="text-center d-none d-xl-table-cell">2019-12-15</td>
-							</tr>
-							<tr>
-								<td class="text-center">5</td>
-								<th><a href='${root }board/read'>제목입니다</a></th>
-								<td class="text-center d-none d-xl-table-cell">2019-12-15</td>
-							</tr>
-							<tr>
-								<td class="text-center">5</td>
-								<th><a href='${root }board/read'>제목입니다</a></th>
-								<td class="text-center d-none d-xl-table-cell">2019-12-15</td>
-							</tr>
+									
+						</c:forEach>
 						</tbody>
 					</table>
 					
